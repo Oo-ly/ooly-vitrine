@@ -1,0 +1,165 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: $colWhite;
+}
+
+html {
+  width: 100%;
+  min-height: 100vh;
+  background: $colBackground;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../img/background.svg');
+  background-size: cover;
+  background-repeat: repeat-y;
+  z-index: -1;
+}
+
+.wrap {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 30px;
+  gap: 30px;
+
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+h1 {
+  position: relative;
+  font-family: 'Exo';
+  font-weight: 400;
+  font-size: 36px;
+  text-align: center;
+
+  strong {
+    display: block;
+    font-weight: bold;
+    color: $colYellow;
+  }
+
+  &.title {
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 80px;
+      width: 60px;
+      background-image: url('../img/lightning.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    &::before {
+      top: 40px;
+      left: -10px;
+      transform: translate(-100%, -100%);
+    }
+
+    &::after {
+      bottom: 20px;
+      right: -10px;
+      transform: translate(100%, 100%);
+    }
+  }
+}
+
+h2 {
+  font-family: 'Exo';
+  font-weight: bold;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+p {
+  font-family: 'Comfortaa';
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+
+  li {
+    font-family: 'Comfortaa';
+    font-weight: bold;
+    font-size: 14px;
+    padding: 15px 0;
+    line-height: 20px;
+  }
+}
+
+img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+.btn {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px 35px;
+
+  font-family: 'Exo';
+  color: #000;
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 1.05px;
+
+  border-radius: 40px;
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 2;
+
+  background-color: $colYellow;
+  transition: color 0.3s ease;
+
+  cursor: pointer;
+
+  &-sm {
+    padding: 10px 30px;
+  }
+
+  &-xs {
+    font-size: 16px;
+    padding: 8px 25px;
+    width: auto;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0px;
+    z-index: -1;
+    bottom: 0px;
+    background-color: #fff;
+    transition: height 0.3s ease;
+    border-radius: 100% 100% 0px 0px;
+  }
+
+  &:hover {
+    //color: $colYellow;
+    &:before {
+      height: 180%;
+    }
+  }
+}

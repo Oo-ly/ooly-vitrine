@@ -1,28 +1,45 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="background"></div>
+    <Header />
+    <router-view></router-view>
+    <Footer />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import './assets/scss/main.scss';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  components: { Header, Footer },
+  data: () => {
+    return {
+      target: 0,
+    };
+  },
+  methods: {
+    lerp(a, b, n) {
+      return (1 - n) * a + b * n;
+    },
+    animate() {
+      requestAnimationFrame(this.animate);
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+      const html = document.querySelector('.background');
+      const currentY = parseFloat(html.style.backgroundPositionY) || 0;
+
+      html.style.backgroundPositionY = `${this.lerp(currentY, this.target, 0.1)}px`;
+    },
+  },
+  mounted() {
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+
+      this.target = -(scrolled * 0.2);
+    });
+    this.animate();
+  },
+};
+</script>
