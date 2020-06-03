@@ -5,7 +5,13 @@
       <article class="formule" v-for="(formule, index) in formules" :key="index">
         <h1>{{ formule.title }}</h1>
         <p v-html="formule.description"></p>
-        <div class="price">{{ formule.price }} €<small>/mois</small></div>
+        <div class="price">
+          <small class="fixed-price">
+            <span v-if="formule.fixedPrice === false">À partir de</span>
+          </small>
+          {{ formule.price }} €
+          <small>/mois</small>
+        </div>
         <router-link to="#" class="btn btn-xs">Rejoindre Oo'ly</router-link>
       </article>
     </div>
@@ -14,31 +20,31 @@
 
 <script>
 export default {
-  name: 'Formules',
+  name: "Formules",
   data: () => {
     return {
       formules: [
         {
-          title: 'Formule découverte',
-          description: '1 dispositif<br />+ 5 Oo au choix',
+          title: "Formule découverte",
+          description: "1 dispositif<br />+ 5 Oo au choix",
           price: 15,
-          fixedPrice: true,
+          fixedPrice: true
         },
         {
-          title: 'Formule Super',
-          description: '1 dispositif<br />+ 8 Oo au choix',
+          title: "Formule Super",
+          description: "1 dispositif<br />+ 8 Oo au choix",
           price: 18,
-          fixedPrice: true,
+          fixedPrice: true
         },
         {
-          title: 'Formule à la carte',
-          description: '1 dispositif<br />+ X Oo au choix',
+          title: "Formule à la carte",
+          description: "1 dispositif<br />+ X Oo au choix",
           price: 12,
-          fixedPrice: false,
-        },
-      ],
+          fixedPrice: false
+        }
+      ]
     };
-  },
+  }
 };
 </script>
 

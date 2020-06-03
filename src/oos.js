@@ -97,7 +97,7 @@ export default [
       Attentionné:
         'Malgré ses petites maladresses, Méli-mél’Oo est toujours bienveillant avec les autres, et ses compagnons sont bienveillants avec lui. Il a toujours un petit mot pour faire plaisir.',
     },
-    friends: ['cinooche', 'cinooche'],
+    friends: ['cinooche'],
     friendships: 'Méli-mél’Oo aime passer du temps avec C’Oo’mique et Cin’Oo’che, ils rigolent bien quand ils sont ensembles tous les trois. ',
   },
   {

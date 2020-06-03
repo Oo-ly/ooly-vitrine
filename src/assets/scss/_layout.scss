@@ -64,7 +64,6 @@ h1 {
   }
 
   &.title {
-    overflow: hidden;
     &::before,
     &::after {
       content: '';

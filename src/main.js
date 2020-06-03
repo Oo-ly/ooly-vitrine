@@ -10,11 +10,11 @@ Vue.use(VueRouter);
 const router = new VueRouter({
   mode: 'history',
   routes,
-  scrollBehavior: function(to) {
+  scrollBehavior: function(to, from, savedPosition) {
     if (to.hash) {
-      return window.scrollTo({ top: document.querySelector(to.hash).offsetTop, behavior: 'smooth' });
+      return { selector: to.hash };
     } else {
-      return { x: 0, y: 0 };
+      return savedPosition || { x: 0, y: 0 };
     }
   },
 });

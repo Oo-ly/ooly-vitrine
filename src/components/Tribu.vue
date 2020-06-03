@@ -1,5 +1,6 @@
 <template>
   <div id="tribu">
+    <Breadcrumbs :links="breadcrumbs" />
     <section class="header wrap">
       <div class="discussion">
         <ul>
@@ -47,8 +48,12 @@
           Les Oo sont de petits compagnons qui viendront interagir avec vous lors de vos nuits difficiles. Ils ont chacun un nom, une spécialité et
           une personnalité propre.
         </p>
-        <p class="small">Ils peuvent ainsi discuter entre eux, mais aussi vous parler et vous proposer des occupations personnalisées.</p>
-        <p class="small">Découvrez tous les Oo, et adopter ceux qui vous correspondent le mieux, pour composer votre tribu !</p>
+        <p
+          class="small"
+        >Ils peuvent ainsi discuter entre eux, mais aussi vous parler et vous proposer des occupations personnalisées.</p>
+        <p
+          class="small"
+        >Découvrez tous les Oo, et adopter ceux qui vous correspondent le mieux, pour composer votre tribu !</p>
       </div>
     </section>
     <section class="tribu wrap">
@@ -64,18 +69,29 @@
 </template>
 
 <script>
-import Oos from '../oos';
-import Formules from './Formules';
-import CardOo from './CardOo';
+import Oos from "../oos";
+import Formules from "./Formules";
+import CardOo from "./CardOo";
+import Breadcrumbs from "./Breadcrumbs";
 
 export default {
-  name: 'Tribu',
-  components: { Formules, CardOo },
+  name: "Tribu",
+  components: { Formules, CardOo, Breadcrumbs },
   data: () => {
     return {
       oos: Oos,
+      breadcrumbs: [
+        {
+          name: "Accueil",
+          url: "/"
+        },
+        {
+          name: "Les Oo'",
+          url: "/tribu"
+        }
+      ]
     };
-  },
+  }
 };
 </script>
 
@@ -95,8 +111,6 @@ export default {
 }
 
 section.header {
-  padding-top: 180px;
-
   .discussion {
     position: relative;
     grid-column: 2 / 7;
@@ -108,7 +122,7 @@ section.header {
     justify-content: flex-start;
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       right: -70px;
@@ -170,8 +184,6 @@ section.header {
   }
 
   @include max-tablet {
-    padding-top: 50px;
-
     .discussion,
     > .content {
       grid-column: span 1;
@@ -185,6 +197,10 @@ section.header {
       &::before {
         right: 0;
       }
+    }
+
+    > .content {
+      margin: 0;
     }
   }
 }
