@@ -2,7 +2,9 @@
   <div id="app">
     <div class="background"></div>
     <Header />
-    <router-view></router-view>
+    <transition>
+      <router-view></router-view>
+    </transition>
     <Footer />
   </div>
 </template>

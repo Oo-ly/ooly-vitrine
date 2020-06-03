@@ -54,5 +54,17 @@ section.formules {
     grid-template-columns: repeat(3, 1fr);
     gap: 50px;
   }
+
+  @include max-tablet {
+    h2,
+    .formules {
+      grid-column: span 1;
+    }
+
+    .formules {
+      padding: 0 40px;
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
 }
 </style>

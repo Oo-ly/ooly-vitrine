@@ -66,7 +66,7 @@ article.formule {
 }
 
 section.contact {
-  padding-top: 180px;
+  padding-top: 90px;
   h2 {
     grid-column: 2 / 12;
     text-align: center;
@@ -125,6 +125,162 @@ section.contact {
 
     .btn.btn-xs {
       margin-top: 20px;
+    }
+  }
+
+  @include max-tablet {
+    h2,
+    p,
+    form {
+      grid-column: span 1;
+    }
+
+    padding-top: 0;
+  }
+}
+
+article.sentence {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 30px 0;
+
+  .oo {
+    position: relative;
+    flex-shrink: 0;
+    margin: 10px 55px 0 0;
+
+    img {
+      height: 80px;
+      width: 80px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 4px;
+      display: block;
+      height: 32px;
+      width: 60px;
+      background-image: url('../img/lightning.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      transform: translate(100%, 0) rotate(-55deg);
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Exo';
+    font-weight: bold;
+
+    .name {
+      color: $colYellow;
+      font-size: 16px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-style: italic;
+      font-size: 17px;
+      line-height: 24px;
+      width: 75%;
+      margin-right: auto;
+    }
+  }
+
+  &:nth-child(even) {
+    .oo {
+      order: 2;
+      margin: 10px 0 0 55px;
+
+      &::after {
+        right: unset;
+        left: 14px;
+        transform: translate(-100%, 0) rotate(-55deg);
+      }
+    }
+
+    .content {
+      .name,
+      p {
+        text-align: right;
+      }
+    }
+
+    .content p {
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
+
+  @include max-tablet {
+    .content p {
+      width: 100%;
+    }
+  }
+}
+
+article.oo {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  padding: 25px 20px;
+  background: $colBackground;
+  border-radius: 10px;
+  text-align: center;
+  height: 100%;
+
+  &:hover {
+    h1 {
+      color: $colYellow;
+    }
+  }
+
+  img {
+    // height: 160px;
+    max-width: 140px;
+    margin: 0 auto 15px;
+  }
+
+  h1 {
+    margin-top: auto;
+    position: relative;
+
+    font-family: 'Exo';
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 1.45px;
+    transition: color 0.3s ease;
+
+    span {
+      position: absolute;
+      bottom: -1px;
+      right: -5px;
+      display: block;
+      height: 10px;
+      width: 10px;
+      border-right: 2px solid;
+      border-bottom: 2px solid;
+      transform: translate(0, -50%) rotate(-45deg);
+    }
+  }
+
+  @include max-tablet {
+    img {
+      width: 100px;
+    }
+
+    h1 {
+      span {
+        right: 0;
+      }
     }
   }
 }

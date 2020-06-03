@@ -1,19 +1,19 @@
 <template>
   <header>
     <nav id="header" class="wrap">
-      <img src="../assets/img/logo.svg" alt="Logo" />
+      <router-link to="/"><img src="../assets/img/logo.svg" alt="Logo"/></router-link>
       <ul class="menu">
         <li>
-          <router-link to="#">Les abonnements</router-link>
+          <router-link to="/#formules">Les abonnements</router-link>
         </li>
         <li>
-          <router-link to="#">Les Oo</router-link>
+          <router-link to="/#oos">Les Oo</router-link>
         </li>
         <li>
-          <router-link to="#">Nos valeurs</router-link>
+          <router-link to="/#valeurs">Nos valeurs</router-link>
         </li>
         <li>
-          <router-link to="#">Nous contacter</router-link>
+          <router-link to="/#contact">Nous contacter</router-link>
         </li>
       </ul>
       <ul class="menu menu--right">

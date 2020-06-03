@@ -19,16 +19,16 @@
       </div>
       <img src="../assets/img/principe.png" alt="Principe d'Oo'ly" />
     </section>
-    <section class="oos wrap">
+    <section class="oos wrap" id="oos">
       <img src="../assets/img/tribu.png" alt="Tribu" />
       <div class="content">
         <h2>Les Oo</h2>
         <p>Découvrez toute la tribu !</p>
-        <router-link to="#" class="btn btn-sm">Découvrir</router-link>
+        <router-link to="/tribu" class="btn btn-sm">Découvrir</router-link>
       </div>
     </section>
-    <Formules />
-    <section class="valeurs wrap">
+    <Formules id="formules" />
+    <section class="valeurs wrap" id="valeurs">
       <h2>Les valeurs de Oo'ly</h2>
       <ul>
         <li v-for="(valeur, index) in valeurs" :key="index">
@@ -39,7 +39,7 @@
         </li>
       </ul>
     </section>
-    <Contact />
+    <Contact id="contact" />
   </div>
 </template>
 
@@ -85,7 +85,7 @@ export default {
 
 <style lang="scss" scoped>
 section.header {
-  padding: 250px 0 0;
+  padding: 180px 0 0;
 
   .title {
     display: flex;
@@ -103,10 +103,22 @@ section.header {
     transform: translateY(-250px);
     margin-bottom: -250px;
   }
+
+  @include max-tablet {
+    .title,
+    img {
+      grid-column: span 1;
+    }
+
+    img {
+      transform: translateY(-60px);
+      margin-bottom: -40px;
+    }
+  }
 }
 
 section.principe {
-  margin-top: -120px;
+  margin-top: -120px 0 125px;
   align-items: flex-end;
 
   .content {
@@ -125,10 +137,17 @@ section.principe {
     grid-column: 6 / 13;
     transform: translateY(40px);
   }
+
+  @include max-tablet {
+    .content,
+    img {
+      grid-column: span 1;
+    }
+  }
 }
 
 section.oos {
-  padding: 250px 0 0;
+  padding: 125px 0 75px;
   img {
     grid-column: 2 /8;
   }
@@ -136,14 +155,21 @@ section.oos {
   .content {
     grid-column: 9 / 12;
   }
+
+  @include max-tablet {
+    .content,
+    img {
+      grid-column: span 1;
+    }
+  }
 }
 
 section.formules {
-  padding-top: 180px;
+  padding: 90px 0;
 }
 
 section.valeurs {
-  padding-top: 150px;
+  padding: 75px 0 90px;
 
   h2 {
     grid-column: 2 / 12;
@@ -189,6 +215,29 @@ section.valeurs {
         text-align: center;
         letter-spacing: 1.1px;
         margin-top: auto;
+      }
+    }
+  }
+
+  @include max-tablet {
+    ul,
+    h2 {
+      grid-column: span 1;
+    }
+
+    ul {
+      li {
+        width: 50%;
+
+        .icon {
+          height: 100px;
+          width: 100px;
+          padding: 20px;
+        }
+
+        h3 {
+          font-size: 14px;
+        }
       }
     }
   }

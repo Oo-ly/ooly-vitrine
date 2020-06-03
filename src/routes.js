@@ -8,7 +8,7 @@ export default [
     component: Tribu,
   },
   {
-    path: '/oo/:name',
+    path: '/tribu/:name',
     component: Oo,
   },
   {
