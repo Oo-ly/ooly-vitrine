@@ -7,12 +7,16 @@
       </div>
       <div class="description">
         <h1>{{ oo.name }}</h1>
-        <p class="small">
-          <strong>Spécialité :</strong>Relaxation & détente
-        </p>
+        <p class="small"><strong>Spécialité : </strong>{{ oo.spe }}</p>
         <p class="small">
           <strong>Traits de caractère</strong>
         </p>
+        <ul class="icons">
+          <li v-for="(icon, key) in oo.icons" :key="key">
+            <span><img :src="require(`../assets/img/icons/${icon}`)" alt=""/></span>
+            <h4>{{ key }}</h4>
+          </li>
+        </ul>
 
         <router-link to="#" class="btn btn-sm">Adopter</router-link>
       </div>
@@ -41,41 +45,41 @@
 </template>
 
 <script>
-import Oos from "../oos";
-import CardOo from "./CardOo";
-import Breadcrumbs from "./Breadcrumbs";
+import Oos from '../oos';
+import CardOo from './CardOo';
+import Breadcrumbs from './Breadcrumbs';
 
 export default {
-  name: "Oo",
+  name: 'Oo',
   components: { CardOo, Breadcrumbs },
   data: () => {
     return {
       oo: null,
       currentLink: {
         name: null,
-        url: null
+        url: null,
       },
       breadcrumbs: [
         {
-          name: "Accueil",
-          url: "/"
+          name: 'Accueil',
+          url: '/',
         },
         {
           name: "Les Oo'",
-          url: "/tribu"
-        }
-      ]
+          url: '/tribu',
+        },
+      ],
     };
   },
   methods: {
     getOo(name) {
-      return Oos.filter(oo => oo.slug === name)[0];
+      return Oos.filter((oo) => oo.slug === name)[0];
     },
     setOo(name) {
-      this.oo = Oos.filter(oo => oo.slug === name)[0];
+      this.oo = Oos.filter((oo) => oo.slug === name)[0];
       this.currentLink.name = this.oo.name;
       this.currentLink.url = `/tribu/${this.oo.slug}`;
-    }
+    },
   },
   mounted() {
     this.setOo(this.$route.params.name);
@@ -85,8 +89,8 @@ export default {
       if (to.params.name) {
         this.setOo(to.params.name);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -99,7 +103,7 @@ section.intro {
     grid-column: 3 / 7;
 
     &::after {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
 
@@ -117,19 +121,59 @@ section.intro {
 
     h1 {
       position: relative;
-      font-family: "Exo";
+      font-family: 'Exo';
       font-size: 36px;
       text-align: left;
       margin: 40px 0 60px;
 
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         bottom: -5px;
         width: 50px;
         height: 2px;
         background-color: #ffc700;
         left: 0;
+      }
+    }
+
+    ul.icons {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      margin: -25px 0 40px;
+
+      li {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+        span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 6px solid #150e5c;
+          border-radius: 50%;
+          padding: 20px;
+          margin-bottom: 10px;
+        }
+
+        img {
+          height: 50px;
+          width: 50px;
+        }
+
+        h4 {
+          font-family: 'Exo';
+          text-align: center;
+          font-size: 14px;
+          font-weight: bold;
+        }
+
+        &:not(:last-child) {
+          margin-right: 40px;
+        }
       }
     }
   }
@@ -184,7 +228,7 @@ section.description {
 
     h3,
     p {
-      font-family: "Montserrat";
+      font-family: 'Montserrat';
     }
 
     h3 {
