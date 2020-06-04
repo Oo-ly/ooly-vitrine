@@ -9,8 +9,10 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "emailjs-com": "^2.4.1",
     "gsap": "^3.3.0",
     "sass-loader": "^8.0.2",
+    "toastr": "^2.1.4",
     "vue": "^2.6.11",
     "vue-router": "^3.3.2"
   },

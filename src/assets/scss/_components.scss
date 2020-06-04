@@ -97,7 +97,8 @@ section.contact {
 
     grid-column: 3 / 11;
 
-    input,
+    input[type='email'],
+    input[type='text'],
     textarea {
       background-color: #120c57;
       box-shadow: none;
@@ -121,7 +122,8 @@ section.contact {
       }
     }
 
-    input {
+    input[type='email'],
+    input[type='text'] {
       height: 60px;
     }
 

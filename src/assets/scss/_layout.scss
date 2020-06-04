@@ -160,6 +160,11 @@ img {
   overflow: hidden;
   z-index: 2;
 
+  box-shadow: none;
+  outline: none;
+  border: none;
+  appearance: none;
+
   background-color: $colYellow;
   transition: color 0.3s ease;
 
@@ -194,4 +199,10 @@ img {
       height: 180%;
     }
   }
+}
+
+#toast-container > div {
+  opacity: 1 !important;
+  box-shadow: none !important;
+  font-family: 'Exo' !important;
 }
