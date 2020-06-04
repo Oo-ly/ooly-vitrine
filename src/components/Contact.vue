@@ -33,6 +33,25 @@ export default {
   },
   methods: {
     sendEmail: function() {
+      if (
+        this.name === null ||
+        this.name.length === 0 ||
+        this.email === null ||
+        this.email.length === 0 ||
+        this.message === null ||
+        this.message.length === 0 ||
+        this.subject === null ||
+        this.subject.length === 0
+      ) {
+        this.showError('Merci de remplir tous les champs.', 'Formulaire');
+        return false;
+      }
+
+      if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/.test(this.email)) {
+        this.showError('Merci de renseigner une adresse email valide.', 'Formulaire');
+        return false;
+      }
+
       this.isSending = true;
 
       emailjs
@@ -51,16 +70,19 @@ export default {
           },
           () => {
             this.isSending = false;
-            Toastr.error("Une erreur s'est produite", 'Message', {
-              positionClass: 'toast-bottom-right',
-              showDuration: '300',
-              hideDuration: '1000',
-              timeOut: '5000',
-              closeButton: true,
-              progressBar: true,
-            });
+            this.showError("Une erreur s'est produite.");
           }
         );
+    },
+    showError(error, title = 'Message') {
+      Toastr.error(error, title, {
+        positionClass: 'toast-bottom-right',
+        showDuration: '300',
+        hideDuration: '1000',
+        timeOut: '5000',
+        closeButton: true,
+        progressBar: true,
+      });
     },
   },
 };
