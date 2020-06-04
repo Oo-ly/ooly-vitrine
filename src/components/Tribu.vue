@@ -3,37 +3,11 @@
     <Breadcrumbs :links="breadcrumbs" />
     <section class="header wrap">
       <div class="discussion">
-        <ul>
-          <li>
-            <article class="sentence">
-              <div class="oo">
-                <img src="../assets/img/oos/CinOoche-clean.png" alt="Cinooche" />
-              </div>
-              <div class="content">
-                <div class="name">Cin'Oo'che</div>
-                <p>Si c’est pas un animal qui l’a tué, c’est ptetre un végétal ?</p>
-              </div>
-            </article>
-            <article class="sentence">
-              <div class="oo">
-                <img src="../assets/img/oos/VegetOo-clean.png" alt="Végétoo" />
-              </div>
-              <div class="content">
-                <div class="name">Végét'Oo</div>
-                <p>Promis c’est pas moi, mais c’est peut-être une sarracenia, une plante carnivore d’Amérique du Nord.</p>
-              </div>
-            </article>
-            <article class="sentence">
-              <div class="oo">
-                <img src="../assets/img/oos/InfOo-clean.png" alt="Infoo" />
-              </div>
-              <div class="content">
-                <div class="name">Inf'Oo</div>
-                <p>Mais non, ces plantes-là ne mangent que des insectes voyons.</p>
-              </div>
-            </article>
+        <transition-group transition-group name="list" tag="ul">
+          <li v-for="(sentence, index) in sentences" :key="index">
+            <Sentence :name="sentence.name" :sentence="sentence.sentence" />
           </li>
-        </ul>
+        </transition-group>
         <div class="writing">
           <div class="dot"></div>
           <div class="dot"></div>
@@ -73,10 +47,11 @@ import Oos from "../oos";
 import Formules from "./Formules";
 import CardOo from "./CardOo";
 import Breadcrumbs from "./Breadcrumbs";
+import Sentence from "./Sentence";
 
 export default {
   name: "Tribu",
-  components: { Formules, CardOo, Breadcrumbs },
+  components: { Formules, CardOo, Breadcrumbs, Sentence },
   data: () => {
     return {
       oos: Oos,
@@ -89,8 +64,33 @@ export default {
           name: "Les Oo'",
           url: "/tribu"
         }
+      ],
+      sentences: [
+        {
+          name: "cinooche",
+          sentence:
+            "Si c’est pas un animal qui l’a tué, c’est ptetre un végétal ?"
+        },
+        {
+          name: "vegetoo",
+          sentence:
+            "Promis c’est pas moi, mais c’est peut-être une sarracenia, une plante carnivore d’Amérique du Nord."
+        },
+        {
+          name: "infoo",
+          sentence:
+            "Mais non, ces plantes-là ne mangent que des insectes voyons."
+        }
       ]
     };
+  },
+  mounted() {
+    setInterval(() => {
+      this.sentences.push({
+        name: "infoo",
+        sentence: "Mais non, ces plantes-là ne mangent que des insectes voyons."
+      });
+    }, 2500);
   }
 };
 </script>
@@ -133,7 +133,60 @@ section.header {
     }
 
     ul {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      max-height: 600px;
       padding: 50px 0 0;
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        background: linear-gradient(
+          180deg,
+          rgba(40, 32, 129, 1) 0%,
+          rgba(18, 11, 86, 0) 50%
+        );
+        z-index: 10;
+      }
+
+      li::v-deep {
+        transition: all 1s;
+      }
+
+      li:nth-child(even)::v-deep {
+        article.sentence {
+          .oo {
+            order: 2;
+            margin: 10px 0 0 55px;
+
+            &::after {
+              right: unset;
+              left: 14px;
+              transform: translate(-100%, 0) rotate(-55deg);
+            }
+          }
+
+          .content {
+            .name,
+            p {
+              text-align: right;
+            }
+          }
+
+          .content p {
+            margin-left: auto;
+            margin-right: 0;
+          }
+        }
+      }
     }
 
     .writing {
@@ -218,6 +271,7 @@ section.tribu {
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     row-gap: 50px;
+    transition: height 1s ease;
 
     li {
       grid-column: span 1;
@@ -253,5 +307,14 @@ section.tribu {
 
 section.formules {
   padding: 160px 0;
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
 }
 </style>

@@ -202,31 +202,6 @@ article.sentence {
     }
   }
 
-  &:nth-child(even) {
-    .oo {
-      order: 2;
-      margin: 10px 0 0 55px;
-
-      &::after {
-        right: unset;
-        left: 14px;
-        transform: translate(-100%, 0) rotate(-55deg);
-      }
-    }
-
-    .content {
-      .name,
-      p {
-        text-align: right;
-      }
-    }
-
-    .content p {
-      margin-left: auto;
-      margin-right: 0;
-    }
-  }
-
   @include max-tablet {
     .content p {
       width: 100%;
