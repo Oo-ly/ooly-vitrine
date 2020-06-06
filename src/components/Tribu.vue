@@ -94,7 +94,9 @@ export default {
           name: "vegetoo",
           sentence:
             "Je commence à avoir soif, je me servirais bien une tisane. Ça vous dit les copains ?"
-        },
+        }
+      ],
+      nextSentences: [
         {
           name: "meli-meloo",
           sentence: "Oh ouiiiii !"
@@ -103,9 +105,74 @@ export default {
           name: "vegetoo",
           sentence:
             "Super ! Peut être une petite verveine ou une camomille, qu’est ce qu’on choisi ?"
+        },
+        {
+          name: "whoow",
+          sentence: "Est-ce qu’on tire à pile ou face ?"
+        },
+        {
+          name: "infoo",
+          sentence: "Bonne idée !"
+        },
+        {
+          name: "whoow",
+          sentence: "Cool ! Pile verveine, face camomille ! C’est partiiiiii ! "
+        },
+        {
+          name: "whoow",
+          sentence: "Pile ! Verveine pour tout le monde !"
+        },
+        {
+          name: "vegetoo",
+          sentence: "Est-ce que vous avez déjà bu une tisane d’ortie ? "
+        },
+        {
+          name: "meli-meloo",
+          sentence:
+            "Moi j’en ai bu une fois, je m’attendais à ce que ça pique, mais en faite pas du tout, c’est tout doux."
+        },
+        {
+          name: "infoo",
+          sentence:
+            "Il parait que c’est très bon pour le corps, notamment la peau et les reins."
+        },
+        {
+          name: "vegetoo",
+          sentence:
+            "Oui c’est aussi riche en calcium. C’est drôle que cette plante urticante soit aussi cool pour nous une fois cuisinée."
+        },
+        {
+          name: "discoo",
+          sentence:
+            "Le calcium c’est pas que dans les orties, c’est dans la musique aussi. Il y a un artiste américain qui fait de l’électro sous le pseudo de Calcium. On s’en passe un morceau ?"
+        },
+        {
+          name: "infoo",
+          sentence:
+            "Oui enfin... C’est quand même un artiste éléctro un peu énervé. Je ne suis pas sûre que ça nous aide à nous détendre..."
+        },
+        {
+          name: "discoo",
+          sentence: "C’est pas faux... Une prochaine fois peut-être !"
         }
       ],
-      nextSentences: [
+      originalSentences: [
+        {
+          name: "vegetoo",
+          sentence:
+            "Je commence à avoir soif, je me servirais bien une tisane. Ça vous dit les copains ?"
+        }
+      ],
+      originalNextSentences: [
+        {
+          name: "meli-meloo",
+          sentence: "Oh ouiiiii !"
+        },
+        {
+          name: "vegetoo",
+          sentence:
+            "Super ! Peut être une petite verveine ou une camomille, qu’est ce qu’on choisi ?"
+        },
         {
           name: "whoow",
           sentence: "Est-ce qu’on tire à pile ou face ?"
@@ -166,18 +233,15 @@ export default {
     }
   },
   mounted() {
-    const interval = setInterval(() => {
+    setInterval(() => {
       if (this.isPlaying) {
         const nextSentence = this.nextSentences.shift();
 
         if (nextSentence) {
           this.sentences.push(nextSentence);
-
-          if (this.nextSentences.length === 0) {
-            this.isPlaying = false;
-          }
         } else {
-          clearInterval(interval);
+          this.sentences = this.originalSentences;
+          this.nextSentences = this.originalNextSentences;
         }
       }
     }, 2500);
@@ -230,6 +294,7 @@ section.header {
       max-height: 600px;
       padding: 50px 0 0;
       overflow: hidden;
+      height: 600px;
 
       &::before {
         content: "";
