@@ -8,10 +8,33 @@
             <Sentence :name="sentence.name" :sentence="sentence.sentence" />
           </li>
         </transition-group>
-        <div class="writing">
+        <div class="writing" ref="writing" :style="`opacity:${isPlaying ? 1 : 0}`">
           <div class="dot"></div>
           <div class="dot"></div>
           <div class="dot"></div>
+        </div>
+        <div class="actions">
+          <div class="action" @click="playPause">
+            <div class="icon">
+              <img
+                src="../assets/img/icons/play.svg"
+                v-if="!isPlaying"
+                style="width: 15px"
+                alt="Jouer"
+              />
+              <img
+                src="../assets/img/icons/pause.svg"
+                v-if="isPlaying"
+                style="width: 15px;height:20px"
+                alt="Pause"
+              />
+            </div>Ecouter
+          </div>
+          <div class="action">
+            <div class="icon">
+              <img src="../assets/img/icons/sound.svg" style="width: 25px" alt="Jouer" />
+            </div>Activer le son
+          </div>
         </div>
       </div>
       <div class="content">
@@ -55,6 +78,7 @@ export default {
   data: () => {
     return {
       oos: Oos,
+      isPlaying: false,
       breadcrumbs: [
         {
           name: "Accueil",
@@ -67,29 +91,95 @@ export default {
       ],
       sentences: [
         {
-          name: "cinooche",
+          name: "vegetoo",
           sentence:
-            "Si c’est pas un animal qui l’a tué, c’est ptetre un végétal ?"
+            "Je commence à avoir soif, je me servirais bien une tisane. Ça vous dit les copains ?"
+        },
+        {
+          name: "meli-meloo",
+          sentence: "Oh ouiiiii !"
         },
         {
           name: "vegetoo",
           sentence:
-            "Promis c’est pas moi, mais c’est peut-être une sarracenia, une plante carnivore d’Amérique du Nord."
+            "Super ! Peut être une petite verveine ou une camomille, qu’est ce qu’on choisi ?"
+        }
+      ],
+      nextSentences: [
+        {
+          name: "whoow",
+          sentence: "Est-ce qu’on tire à pile ou face ?"
+        },
+        {
+          name: "infoo",
+          sentence: "Bonne idée !"
+        },
+        {
+          name: "whoow",
+          sentence: "Cool ! Pile verveine, face camomille ! C’est partiiiiii ! "
+        },
+        {
+          name: "whoow",
+          sentence: "Pile ! Verveine pour tout le monde !"
+        },
+        {
+          name: "vegetoo",
+          sentence: "Est-ce que vous avez déjà bu une tisane d’ortie ? "
+        },
+        {
+          name: "meli-meloo",
+          sentence:
+            "Moi j’en ai bu une fois, je m’attendais à ce que ça pique, mais en faite pas du tout, c’est tout doux."
         },
         {
           name: "infoo",
           sentence:
-            "Mais non, ces plantes-là ne mangent que des insectes voyons."
+            "Il parait que c’est très bon pour le corps, notamment la peau et les reins."
+        },
+        {
+          name: "vegetoo",
+          sentence:
+            "Oui c’est aussi riche en calcium. C’est drôle que cette plante urticante soit aussi cool pour nous une fois cuisinée."
+        },
+        {
+          name: "discoo",
+          sentence:
+            "Le calcium c’est pas que dans les orties, c’est dans la musique aussi. Il y a un artiste américain qui fait de l’électro sous le pseudo de Calcium. On s’en passe un morceau ?"
+        },
+        {
+          name: "infoo",
+          sentence:
+            "Oui enfin... C’est quand même un artiste éléctro un peu énervé. Je ne suis pas sûre que ça nous aide à nous détendre..."
+        },
+        {
+          name: "discoo",
+          sentence: "C’est pas faux... Une prochaine fois peut-être !"
         }
       ]
     };
   },
+  methods: {
+    playPause() {
+      if (this.nextSentences.length > 0) {
+        this.isPlaying = !this.isPlaying;
+      }
+    }
+  },
   mounted() {
-    setInterval(() => {
-      this.sentences.push({
-        name: "infoo",
-        sentence: "Mais non, ces plantes-là ne mangent que des insectes voyons."
-      });
+    const interval = setInterval(() => {
+      if (this.isPlaying) {
+        const nextSentence = this.nextSentences.shift();
+
+        if (nextSentence) {
+          this.sentences.push(nextSentence);
+
+          if (this.nextSentences.length === 0) {
+            this.isPlaying = false;
+          }
+        } else {
+          clearInterval(interval);
+        }
+      }
     }, 2500);
   }
 };
@@ -163,6 +253,7 @@ section.header {
 
       li:nth-child(even)::v-deep {
         article.sentence {
+          justify-content: flex-end;
           .oo {
             order: 2;
             margin: 10px 0 0 55px;
@@ -202,6 +293,7 @@ section.header {
       background-color: #1f186f;
       border-radius: 50px;
       padding: 15px 18px;
+      transition: opacity 0.2s ease;
 
       .dot {
         display: block;
@@ -218,6 +310,41 @@ section.header {
 
         &:nth-child(3) {
           animation-delay: 0.8s;
+        }
+      }
+    }
+
+    .actions {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      transform: translateY(50%);
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .action {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        margin-left: 30px;
+
+        font-family: "Exo";
+        font-weight: bold;
+        color: $colYellow;
+        font-size: 16px;
+
+        .icon {
+          display: flex;
+          border: 8px solid #150e5c;
+          height: 60px;
+          width: 60px;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          margin-right: 15px;
         }
       }
     }
