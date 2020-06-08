@@ -378,41 +378,6 @@ section.header {
         }
       }
     }
-
-    .actions {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      transform: translateY(50%);
-
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-
-      .action {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        cursor: pointer;
-        margin-left: 30px;
-
-        font-family: "Exo";
-        font-weight: bold;
-        color: $colYellow;
-        font-size: 16px;
-
-        .icon {
-          display: flex;
-          border: 8px solid #150e5c;
-          height: 60px;
-          width: 60px;
-          align-items: center;
-          justify-content: center;
-          border-radius: 50%;
-          margin-right: 15px;
-        }
-      }
-    }
   }
 
   > .content {

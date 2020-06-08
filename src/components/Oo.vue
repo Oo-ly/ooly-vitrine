@@ -4,16 +4,39 @@
     <section class="intro wrap" v-if="oo">
       <div class="image">
         <img :src="require(`../assets/img/oos/${oo.image}`)" alt />
+        <div class="actions">
+          <div class="action" @click="playPause">
+            <div class="icon">
+              <img
+                src="../assets/img/icons/play.svg"
+                v-if="!isPlaying"
+                style="width: 15px"
+                alt="Jouer"
+              />
+              <img
+                src="../assets/img/icons/pause.svg"
+                v-if="isPlaying"
+                style="width: 15px;height:20px"
+                alt="Pause"
+              />
+            </div>Ecouter
+          </div>
+        </div>
       </div>
       <div class="description">
         <h1>{{ oo.name }}</h1>
-        <p class="small"><strong>Spécialité : </strong>{{ oo.spe }}</p>
+        <p class="small">
+          <strong>Spécialité :</strong>
+          {{ oo.spe }}
+        </p>
         <p class="small">
           <strong>Traits de caractère</strong>
         </p>
         <ul class="icons">
           <li v-for="(icon, key) in oo.icons" :key="key">
-            <span><img :src="require(`../assets/img/icons/${icon}`)" alt=""/></span>
+            <span>
+              <img :src="require(`../assets/img/icons/${icon}`)" alt />
+            </span>
             <h4>{{ key }}</h4>
           </li>
         </ul>
@@ -45,41 +68,56 @@
 </template>
 
 <script>
-import Oos from '../oos';
-import CardOo from './CardOo';
-import Breadcrumbs from './Breadcrumbs';
+import Oos from "../oos";
+import CardOo from "./CardOo";
+import Breadcrumbs from "./Breadcrumbs";
 
 export default {
-  name: 'Oo',
+  name: "Oo",
   components: { CardOo, Breadcrumbs },
   data: () => {
     return {
       oo: null,
       currentLink: {
         name: null,
-        url: null,
+        url: null
       },
+      isPlaying: false,
+      audio: null,
       breadcrumbs: [
         {
-          name: 'Accueil',
-          url: '/',
+          name: "Accueil",
+          url: "/"
         },
         {
           name: "Les Oo'",
-          url: '/tribu',
-        },
-      ],
+          url: "/tribu"
+        }
+      ]
     };
   },
   methods: {
     getOo(name) {
-      return Oos.filter((oo) => oo.slug === name)[0];
+      return Oos.filter(oo => oo.slug === name)[0];
     },
     setOo(name) {
-      this.oo = Oos.filter((oo) => oo.slug === name)[0];
+      this.oo = Oos.filter(oo => oo.slug === name)[0];
       this.currentLink.name = this.oo.name;
       this.currentLink.url = `/tribu/${this.oo.slug}`;
     },
+    playPause() {
+      this.isPlaying = !this.isPlaying;
+
+      if (this.isPlaying) {
+        this.audio = new Audio(require(`../assets/mp3/${this.oo.audio}`));
+
+        this.audio.addEventListener("ended", () => (this.isPlaying = false));
+
+        this.audio.play();
+      } else {
+        if (this.audio) this.audio.pause();
+      }
+    }
   },
   mounted() {
     this.setOo(this.$route.params.name);
@@ -89,8 +127,8 @@ export default {
       if (to.params.name) {
         this.setOo(to.params.name);
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -103,7 +141,7 @@ section.intro {
     grid-column: 3 / 7;
 
     &::after {
-      content: '';
+      content: "";
       display: block;
       position: absolute;
 
@@ -114,6 +152,10 @@ section.intro {
       background-color: #282081;
       z-index: -1;
     }
+
+    .actions {
+      padding-right: 50px;
+    }
   }
 
   .description {
@@ -121,13 +163,13 @@ section.intro {
 
     h1 {
       position: relative;
-      font-family: 'Exo';
+      font-family: "Exo";
       font-size: 36px;
       text-align: left;
       margin: 40px 0 60px;
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: -5px;
         width: 50px;
@@ -165,7 +207,7 @@ section.intro {
         }
 
         h4 {
-          font-family: 'Exo';
+          font-family: "Exo";
           text-align: center;
           font-size: 14px;
           font-weight: bold;
@@ -228,7 +270,7 @@ section.description {
 
     h3,
     p {
-      font-family: 'Montserrat';
+      font-family: "Montserrat";
     }
 
     h3 {

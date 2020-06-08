@@ -5,6 +5,7 @@ export default [
     image: 'DiscOo-clean.png',
     slug: 'discoo',
     spe: 'Musique',
+    audio: 'disco.mp3',
     icons: {
       Curieux: 'curieux.svg',
       'Aime faire plaisir': 'plaisir.svg',
@@ -27,6 +28,7 @@ export default [
     image: 'WhOow-clean.png',
     slug: 'whoow',
     spe: 'Surprise',
+    audio: 'whow.mp3',
     icons: {
       Imprévisible: 'imprevisible.svg',
       Fun: 'amuser.svg',
@@ -46,6 +48,7 @@ export default [
     image: 'VegetOo-clean.png',
     slug: 'vegetoo',
     spe: 'Plantes & nature',
+    audio: 'vegeto.mp3',
     icons: {
       Zen: 'zen.svg',
       Joyeux: 'joyeux.svg',
@@ -67,6 +70,7 @@ export default [
     image: 'CinOoche-clean.png',
     slug: 'cinooche',
     spe: 'Cinéma & séries',
+    audio: 'cinoche.mp3',
     icons: {
       Amical: 'amical.svg',
       "Aime s'amuser": 'amuser.svg',
@@ -88,6 +92,7 @@ export default [
     image: 'COomique-clean.png',
     slug: 'coomique',
     spe: 'Humour',
+    audio: 'comique.mp3',
     icons: {
       Drôle: 'drole.svg',
       Taquin: 'taquin.svg',
@@ -109,6 +114,7 @@ export default [
     image: 'MelimelOo-clean.png',
     slug: 'meli-meloo',
     spe: 'Bienveillance & maladresse',
+    audio: 'melimelo.mp3',
     icons: {
       Maladroit: 'maladroit.svg',
       Attentionné: 'attentionne.svg',
@@ -130,6 +136,7 @@ export default [
     image: 'InfOo-clean.png',
     slug: 'infoo',
     spe: 'Informations & anecdotes',
+    audio: 'info.mp3',
     icons: {
       Curieux: 'curieux.svg',
       Fiable: 'fiable.svg',
@@ -152,6 +159,7 @@ export default [
     image: 'YOoga-clean.png',
     slug: 'yooga',
     spe: 'Détente & relaxation',
+    audio: 'yoga.mp3',
     icons: {
       Zen: 'zen.svg',
       Réconfortant: 'reconfortant.svg',
