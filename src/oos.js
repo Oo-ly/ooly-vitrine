@@ -2,7 +2,7 @@ export default [
   {
     name: "Disc'Oo",
     color: '#0DB9FF',
-    image: 'DiscOo-clean.png',
+    image: 'Discoo.png',
     slug: 'discoo',
     spe: 'Musique',
     audio: 'disco.mp3',
@@ -25,7 +25,7 @@ export default [
   {
     name: "Wh'Oo'w",
     color: '#FF9000',
-    image: 'WhOow-clean.png',
+    image: 'Whow.png',
     slug: 'whoow',
     spe: 'Surprise',
     audio: 'whow.mp3',
@@ -45,7 +45,7 @@ export default [
   {
     name: "Végét'Oo",
     color: '#4A9340',
-    image: 'VegetOo-clean.png',
+    image: 'Vegeto.png',
     slug: 'vegetoo',
     spe: 'Plantes & nature',
     audio: 'vegeto.mp3',
@@ -67,7 +67,7 @@ export default [
   {
     name: "Cin'Oo'che",
     color: '#D9283E',
-    image: 'CinOoche-clean.png',
+    image: 'Cinoche.png',
     slug: 'cinooche',
     spe: 'Cinéma & séries',
     audio: 'cinoche.mp3',
@@ -89,7 +89,7 @@ export default [
   {
     name: "C'Oo'mique",
     color: '#FFC402',
-    image: 'COomique-clean.png',
+    image: 'Comique.png',
     slug: 'coomique',
     spe: 'Humour',
     audio: 'comique.mp3',
@@ -111,7 +111,7 @@ export default [
   {
     name: "Méli-mél'Oo",
     color: '#9E7DF2',
-    image: 'MelimelOo-clean.png',
+    image: 'Melimelo.png',
     slug: 'meli-meloo',
     spe: 'Bienveillance & maladresse',
     audio: 'melimelo.mp3',
@@ -133,7 +133,7 @@ export default [
   {
     name: "Inf'Oo",
     color: '#3082E1',
-    image: 'InfOo-clean.png',
+    image: 'info.png',
     slug: 'infoo',
     spe: 'Informations & anecdotes',
     audio: 'info.mp3',
@@ -156,7 +156,7 @@ export default [
   {
     name: "Y'Oo'ga",
     color: '#62C0A6',
-    image: 'YOoga-clean.png',
+    image: 'Yoga.png',
     slug: 'yooga',
     spe: 'Détente & relaxation',
     audio: 'yoga.mp3',
