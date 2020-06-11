@@ -27,19 +27,19 @@ export default {
         {
           title: "Formule découverte",
           description: "1 dispositif<br />+ 5 Oo au choix",
-          price: 15,
+          price: 25,
           fixedPrice: true
         },
         {
           title: "Formule Super",
           description: "1 dispositif<br />+ 8 Oo au choix",
-          price: 18,
+          price: 28,
           fixedPrice: true
         },
         {
           title: "Formule à la carte",
           description: "1 dispositif<br />+ X Oo au choix",
-          price: 12,
+          price: 20,
           fixedPrice: false
         }
       ]
