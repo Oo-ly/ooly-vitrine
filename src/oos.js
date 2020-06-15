@@ -11,7 +11,7 @@ export default [
       'Aime faire plaisir': 'plaisir.svg',
     },
     description:
-      'Disc’Oo adore la musique. Il est super calé, il connaît plein d’artistes différents et il aime tous les styles. Parfois d’humeur à réécouter les classiques et parfois voulant plutôt découvrir de nouveaux morceaux, Disc’Oo trouve toujours une musique à écouter et à partager. C\’est d’ailleurs très important pour lui, de partager. Il adore créer une bonne ambiance pour tous ceux qui l’accompagnent.',
+      'Disc’Oo adore la musique. Il est super calé, il connaît plein d’artistes différents et il aime tous les styles. Parfois d’humeur à réécouter les classiques et parfois voulant plutôt découvrir de nouveaux morceaux, Disc’Oo trouve toujours une musique à écouter et à partager. C’est d’ailleurs très important pour lui, de partager. Il adore créer une bonne ambiance pour tous ceux qui l’accompagnent.',
     traits: {
       Curieux:
         'Disc’Oo aime la découverte de nouveaux morceaux, de nouveaux artistes, de nouveaux styles. Même s’il en connaît déjà beaucoup, il continue toujours de vouloir découvrir des nouveautés.',
@@ -34,7 +34,7 @@ export default [
       Fun: 'amuser.svg',
     },
     description:
-      'Wh’Oo’w est un Oo’ plein de surprises, avec lui, on ne sait jamais à quoi s’attendre ! Il apporte un peu de piment dans les discussions et occupations de ses compagnons, en leur proposant d\’ajouter un peu de hasard et de surprise dans ce qu’ils font. Que ce soit en s’inspirant d’un mot pris au hasard dans le dictionnaire, ou en faisant des choix à pile ou face, avec lui, les situations deviennent toujours un peu décalées et étonnantes !',
+      'Wh’Oo’w est un Oo’ plein de surprises, avec lui, on ne sait jamais à quoi s’attendre ! Il apporte un peu de piment dans les discussions et occupations de ses compagnons, en leur proposant d’ajouter un peu de hasard et de surprise dans ce qu’ils font. Que ce soit en s’inspirant d’un mot pris au hasard dans le dictionnaire, ou en faisant des choix à pile ou face, avec lui, les situations deviennent toujours un peu décalées et étonnantes !',
     traits: {
       Imprévisible: 'Difficile de savoir ce que Wh’Oo’w va proposer aujourd’hui.',
       Fun: 'La seule chose qui est sûre avec Wh’Oo’w, c’est qu’il est toujours de bonne humeur et prêt à surprendre ses compagnons.',
